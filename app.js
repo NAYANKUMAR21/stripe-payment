@@ -32,8 +32,8 @@ app.post('/checkout-session', async (req, res) => {
         };
       }),
 
-      success_url: `${process.env.URL}/success.html`,
-      cancel_url: `${process.env.URL}/cancel.html`,
+      success_url: `http://localhost:${process.env.PORT}/success.html`,
+      cancel_url: `http://localhost:${process.env.PORT}/cancel.html`,
     });
     return res.status(200).json(sessions);
   } catch (er) {
@@ -45,4 +45,4 @@ app.get('/', (req, res) => {
   return res.status(200).send({ message: 'Welcome to backend' });
 });
 
-app.listen(8080, () => console.log('server running on port 8080'));
+app.listen(process.env.PORT, () => console.log('server running on port 8080'));
